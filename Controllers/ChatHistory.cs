@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ChatHistoryAPI.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ChatHistoryAPI
 {
@@ -28,6 +29,14 @@ namespace ChatHistoryAPI
         }
 
         [HttpGet("histories/{userID}/topics")]
+        public async Task<IActionResult> GetTopicsByUserID([FromRoute] string userID)
+        {
+            var topics = await _context.Topics
+                .Include(t => t.Messages)
+                .Where(t => t.UserID == userID)
+                .ToListAsync();
+
+            return Ok(topics);
         }
     }
 }
