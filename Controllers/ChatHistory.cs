@@ -19,8 +19,11 @@ namespace ChatHistoryAPI
         }
 
         [HttpPost("histories")]
-        public async Task<IActionResult> SaveChatHistory()
+        public async Task<IActionResult> SaveChatHistory([FromBody] Topic topic)
         {
+            _context.Topics.Add(topic);
+            await _context.SaveChangesAsync();
+
             return Ok();
         }
 
