@@ -1,15 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace ChatHistoryAPI.Models
 {
     public class Topic
     {
-        public int Id { get; set; }
+        [Key]
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string UserID { get; set; }
-        public ICollection<Message> Messages { get; set; }
+        public ICollection<Message> Messages { get; set; } = new List<Message>();
     }
 }

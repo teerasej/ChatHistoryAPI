@@ -1,17 +1,19 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
+using System.ComponentModel.DataAnnotations;
 
 namespace ChatHistoryAPI.Models
 {
-   public class Message
-{
-    public int Id { get; set; }
-    public int TopicId { get; set; }
-    public string Sender { get; set; }
-    public string Content { get; set; }
-    public DateTime Timestamp { get; set; }
-    public Topic Topic { get; set; }
-}
+    public class Message
+    {
+        [Key]
+        public Guid Id { get; set; }
+
+        public Guid? TopicId { get; set; }
+        public string Sender { get; set; }
+        public string Content { get; set; }
+        public DateTime Timestamp { get; set; }
+
+
+        public Topic? Topic { get; set; }
+    }
 }
