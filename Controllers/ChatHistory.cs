@@ -27,10 +27,7 @@ namespace ChatHistoryAPI
             return Ok();
         }
 
-        [HttpGet("topics/{userID}")]
-        public IActionResult GetTopicsByUserID([FromRoute] string userID)
-        {   
-            return Ok(new { userId = userID });
+        [HttpGet("histories/{userID}/topics")]
         }
     }
 }
