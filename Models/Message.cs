@@ -13,7 +13,5 @@ namespace ChatHistoryAPI.Models
         public string Content { get; set; }
         public DateTime Timestamp { get; set; }
 
-
-        public Topic? Topic { get; set; }
     }
 }
