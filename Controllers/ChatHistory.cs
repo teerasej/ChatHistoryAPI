@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ChatHistoryAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ChatHistoryAPI
@@ -10,6 +11,13 @@ namespace ChatHistoryAPI
     [Route("api/chat")]
     public class ChatHistory : ControllerBase
     {
+        private readonly ChatAppContext _context;
+
+        public ChatHistory(ChatAppContext context)
+        {
+            _context = context;
+        }
+
         [HttpPost("histories")]
         public async Task<IActionResult> SaveChatHistory()
         {
