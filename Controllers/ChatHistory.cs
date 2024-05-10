@@ -22,6 +22,11 @@ namespace ChatHistoryAPI
         [HttpPost("histories")]
         public async Task<IActionResult> SaveChatHistory([FromBody] Topic topic)
         {
+            if(ModelState.IsValid == false) 
+            {
+                return BadRequest(ModelState);
+            }
+
             _context.Topics.Add(topic);
             await _context.SaveChangesAsync();
 
