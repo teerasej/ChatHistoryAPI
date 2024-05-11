@@ -30,7 +30,7 @@ namespace ChatHistoryAPI
             _context.Topics.Add(topic);
             await _context.SaveChangesAsync();
 
-            return Ok();
+            return Ok(new { topicID = topic.Id, userID = topic.UserID });
         }
 
         [HttpGet("histories/{userID}/topics")]
